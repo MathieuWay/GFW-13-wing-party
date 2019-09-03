@@ -7,6 +7,7 @@ public class TouchPlayer : MonoBehaviour
     private GameObject puckTarget;
     private Rigidbody2D puckTargetRigidBody;
     private Puck TargetPuck;
+    int id = 0;
     public float speed;
     private Vector3 mousePosition;
     private Vector2 direction;
@@ -32,7 +33,6 @@ public class TouchPlayer : MonoBehaviour
         }*/
         if (Input.GetMouseButtonDown(0))
         {
-            int id = 0;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (mousePosition.x < 0)
                 id = 1;
@@ -58,9 +58,7 @@ public class TouchPlayer : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && puckTarget != null)
         {
-            TargetPuck.followFinger = false;
-            puckTargetRigidBody = null;
-            puckTarget = null;
+            unlinkPuck();
         }
 
         if(puckTarget != null)
@@ -71,7 +69,21 @@ public class TouchPlayer : MonoBehaviour
     private void PuckFollow()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = (mousePosition - puckTarget.transform.position).normalized;
-        puckTargetRigidBody.velocity = new Vector2(direction.x * speed, direction.y * speed);
+        if((mousePosition.x < 0 && id == 1) || (mousePosition.x > 0 && id == 2))
+        {
+            direction = (mousePosition - puckTarget.transform.position).normalized;
+            puckTargetRigidBody.velocity = new Vector2(direction.x * speed, direction.y * speed);
+        }
+        else
+        {
+            unlinkPuck();
+        }
+    }
+
+    private void unlinkPuck()
+    {
+        TargetPuck.followFinger = false;
+        puckTargetRigidBody = null;
+        puckTarget = null;
     }
 }

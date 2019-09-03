@@ -58,7 +58,8 @@ public class Puck : MonoBehaviour
             collisionId = collidedpuck.GetId();
             Vector2 thisVelocity = rb.velocity;
             //PHYSICS
-            collidedpuck.PuckCollision(collision.gameObject.GetComponent<Rigidbody2D>().velocity);
+            //colObjectSpeed = ;
+            collidedpuck.PuckCollision(idle);
             //
 
             if (id != collisionId)
@@ -101,18 +102,24 @@ public class Puck : MonoBehaviour
             if (rb.velocity.magnitude <= startIdleBelowSpeed && !followFinger)
                 StartIdle();
         }
+        /*
         if(colObjectSpeed != Vector2.zero)
         {
             rb.velocity = colObjectSpeed;
             colObjectSpeed = Vector2.zero;
         }
+        */
     }
 
-    private void PuckCollision(Vector2 collisionSpeed)
+    private void PuckCollision(bool collidedWithIdle)
     {
         if (this.idle)
         {
             idle = false;
+        }
+        else if(collidedWithIdle)
+        {
+            idle = true;
         }
     }
 
@@ -121,7 +128,7 @@ public class Puck : MonoBehaviour
         if (!this.idle)
         {
             idle = true;
-            if(transform.position.x < 0)
+            if(transform.position.x < 0f)
             {
                 SwitchOwner(1);
             }
