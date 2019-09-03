@@ -6,10 +6,11 @@ public class Puck : MonoBehaviour
 {
     public int id;
     //idle
-    private bool idle;
-    private float idleTime;
-    private Vector2 direction;
+    public bool idle;
+    public float idleTime;
+    private Vector3 idleDirection;
     public float idleCooldown;
+    public float idleSpeed;
 
     private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
@@ -87,7 +88,6 @@ public class Puck : MonoBehaviour
             Vector2 thisVelocity = rb.velocity;
             collision.transform.GetComponent<Rigidbody2D>().velocity = thisVelocity;
             rb.velocity = new Vector2(0, 0);
-            rb.bodyType = RigidbodyType2D.Kinematic;
             //PHYSICS
 
             //
@@ -121,16 +121,18 @@ public class Puck : MonoBehaviour
         if (idle)
         {
             idleTime += Time.deltaTime;
+            //rb.AddForce(idleDirection * Time.deltaTime * idleSpeed);
             if (idleTime >= idleCooldown)
             {
-                direction = RandomDirection();
+                idleDirection = RandomDirection();
+                idleTime = 0;
             }
         }
     }
 
-    private Vector2 RandomDirection()
+    private Vector3 RandomDirection()
     {
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
     }
 
 

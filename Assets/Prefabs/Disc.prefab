@@ -147,4 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  idle: 0
+  idleTime: 0
+  idleCooldown: 5
+  idleSpeed: 3
   speed: 100
