@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private bool onPause;
     private Player playerOne;
     private Player playerTwo;
-
+    public int specialPuckSpawnChance;
     public GameObject puckPrefabs;
     public int spawnAreaWidth;
     public int spawnAreaHeight;
@@ -89,7 +89,16 @@ public class GameManager : MonoBehaviour
         Vector3 pos = new Vector3(Random.Range(deadZone, spawnAreaWidth / 2f), Random.Range(-(spawnAreaHeight/2f), spawnAreaHeight/2f), 0);
         if (owner == 1)
             pos.x = -pos.x;
-        GameObject newPuck = Instantiate(puckPrefabs, pos, Quaternion.identity);
-        newPuck.GetComponent<Puck>().SwitchOwner(owner);
+        Puck newPuck = Instantiate(puckPrefabs, pos, Quaternion.identity).GetComponent<Puck>();
+        newPuck.SwitchOwner(owner);
+        if (Random.Range(0f, 100f) < specialPuckSpawnChance)
+        {
+            newPuck.SetSpecialPuck();
+        }
+    }
+
+    public int countPuckOnSide()
+    {
+        return 0;
     }
 }

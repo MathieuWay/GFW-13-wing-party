@@ -9,12 +9,13 @@ public class TriggerGoal : MonoBehaviour
     {
         if(collision.gameObject.tag == "Puck")
         {
-            int puckId = collision.gameObject.GetComponent<Puck>().GetId();
+            Puck puck = collision.gameObject.GetComponent<Puck>();
+            int puckId = puck.GetId();
             //TODO If puck is different color from triggerOwner
             if (id != puckId)
             {
+                GameManager.Instance.AddScore(puckId, puck.GetValue());
                 SoundManager.instance.PlayGoalSFX();
-                GameManager.Instance.AddScore(puckId, 1);
             }
             GameObject.Destroy(collision.gameObject);
             GameManager.Instance.SpawnPuck(puckId);
