@@ -11,11 +11,9 @@ public class TouchPlayer : MonoBehaviour
     public float speed;
     private Vector3 mousePosition;
     private Vector2 direction;
-    private bool followFinger;
     // Start is called before the first frame update
     void Start()
     {
-        followFinger = false;
 
     }
 
