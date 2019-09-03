@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 {
     public static float currentTime=0;
-    float startingTime=10f;
+    float startingTime=4f;
     public GameObject Endcard,HUD;
 
 
@@ -33,7 +33,7 @@ public class CountdownTimer : MonoBehaviour
 
         if(currentTime<=0)
         {
-            Debug.Log("Le timer est passé dans le négatif");
+            //Debug.Log("Le timer est passé dans le négatif"); 
             Endcard.SetActive(true);
             HUD.SetActive(false);
 

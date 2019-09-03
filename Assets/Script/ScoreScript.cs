@@ -9,7 +9,7 @@ public class ScoreScript : MonoBehaviour
 
     public static int scoreValue_p1=0;
     public static int scoreValue_p2=0;
-    private static float timer;
+    public static float timer;
     private int wins_p1=0;
     private int wins_p2=0;
     Text score;
@@ -57,9 +57,9 @@ public class ScoreScript : MonoBehaviour
             winnerName.text = "Egalité ! Chaque joueur remporte un point";
 
         }
-        timer=CountdownTimer.currentTime;
 
-        if(timer<=0){
+
+        if(CountdownTimer.currentTime<1f){
         Debug.Log("Le timer est passé dans le négatif");
     }
         
