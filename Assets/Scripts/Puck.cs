@@ -43,6 +43,7 @@ public class Puck : MonoBehaviour
 
     void Update()
     {
+        rb.drag = airResistence;
         if (followFinger)
         {
             MoveWithMouse();
