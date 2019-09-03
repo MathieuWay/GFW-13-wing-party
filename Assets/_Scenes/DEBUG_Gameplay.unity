@@ -1515,6 +1515,7 @@ MonoBehaviour:
   spawnAreaWidth: 14
   spawnAreaHeight: 6
   deadZone: 1
+  debug: 1
 --- !u!1 &1168737705
 GameObject:
   m_ObjectHideFlags: 0

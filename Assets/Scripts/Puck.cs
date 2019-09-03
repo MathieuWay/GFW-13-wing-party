@@ -11,6 +11,7 @@ public class Puck : MonoBehaviour
     private Vector3 idleDirection;
     public float idleCooldown;
     public float idleSpeed;
+    public float startIdleBelowSpeed;
 
     private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
@@ -129,6 +130,11 @@ public class Puck : MonoBehaviour
                 StartIdle();
             }
         }
+        else
+        {
+            if (rb.velocity.magnitude <= startIdleBelowSpeed && !followFinger)
+                StartIdle();
+        }
         if(colObjectSpeed != Vector2.zero)
         {
             rb.velocity = colObjectSpeed;
@@ -141,10 +147,6 @@ public class Puck : MonoBehaviour
         if (this.idle)
         {
             idle = false;
-        }
-        else
-        {
-            StartIdle();
         }
     }
 
