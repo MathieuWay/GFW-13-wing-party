@@ -12,4 +12,11 @@ public void LoadLvl(string nameScene)
     UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
 }
 
+public void QuitGame()
+{
+    Application.Quit();
+    Debug.Log("You quit the game");
 }
+
+}
+
