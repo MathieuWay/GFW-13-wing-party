@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
 
     public AudioSource goalSFX;
+    public AudioSource BounceSFX;
     public static SoundManager instance;
 
 
@@ -28,6 +29,11 @@ public class SoundManager : MonoBehaviour
     public void PlayGoalSFX()
     {
         goalSFX.Play();
+    }
+
+    public void PlayBounceSFX()
+    {
+        BounceSFX.Play();
     }
 
 
