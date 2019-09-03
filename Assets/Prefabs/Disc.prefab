@@ -136,6 +136,5 @@ MonoBehaviour:
   idle: 0
   idleTime: 0
   idleCooldown: 5
-  idleSpeed: 3
+  idleSpeed: 10
   speed: 100
-  airResistence: 0.5

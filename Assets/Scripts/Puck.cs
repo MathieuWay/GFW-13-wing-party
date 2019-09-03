@@ -26,8 +26,8 @@ public class Puck : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        idle = true;
         rb = GetComponent<Rigidbody2D>();
+        StartIdle();
         followFinger = false;
     }
 
@@ -43,7 +43,6 @@ public class Puck : MonoBehaviour
 
     void Update()
     {
-        rb.drag = airResistence;
         if (followFinger)
         {
             MoveWithMouse();
@@ -60,6 +59,8 @@ public class Puck : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            if (idle)
+                idle = false;
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direction = (mousePosition - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
@@ -86,11 +87,11 @@ public class Puck : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Puck")
         {
-            collisionId = collision.gameObject.GetComponent<Puck>().GetId();
+            Puck collidedpuck = collision.gameObject.GetComponent<Puck>();
+            collisionId = collidedpuck.GetId();
             Vector2 thisVelocity = rb.velocity;
-            colObjectSpeed = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             //PHYSICS
-
+            collidedpuck.PuckCollision(collision.gameObject.GetComponent<Rigidbody2D>().velocity);
             //
 
             if (id != collisionId)
@@ -117,20 +118,42 @@ public class Puck : MonoBehaviour
             else
                 newId = 1;
             SwitchOwner(newId);
-            rb.velocity = colObjectSpeed;
-            colObjectSpeed = Vector2.zero;
             changeOwnerNextUpdate = false;
         }
         if (idle)
         {
             idleTime += Time.deltaTime;
-            //rb.AddForce(idleDirection * Time.deltaTime * idleSpeed);
+            rb.velocity = idleDirection * Time.deltaTime * idleSpeed;
             if (idleTime >= idleCooldown)
             {
-                idleDirection = RandomDirection();
-                idleTime = 0;
+                StartIdle();
             }
         }
+        if(colObjectSpeed != Vector2.zero)
+        {
+            rb.velocity = colObjectSpeed;
+            colObjectSpeed = Vector2.zero;
+        }
+    }
+
+    private void PuckCollision(Vector2 collisionSpeed)
+    {
+        if (this.idle)
+        {
+            idle = false;
+        }
+        else
+        {
+            StartIdle();
+        }
+    }
+
+    private void StartIdle()
+    {
+        if(!this.idle)
+        idle = true;
+        idleDirection = RandomDirection();
+        idleTime = 0;
     }
 
     private Vector3 RandomDirection()
