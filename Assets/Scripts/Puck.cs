@@ -21,6 +21,7 @@ public class Puck : MonoBehaviour
     private Vector3 mousePosition;
     private Vector2 direction;
     private bool followFinger;
+    private Vector2 colObjectSpeed;
 
     private void Start()
     {
@@ -86,8 +87,7 @@ public class Puck : MonoBehaviour
         {
             collisionId = collision.gameObject.GetComponent<Puck>().GetId();
             Vector2 thisVelocity = rb.velocity;
-            collision.transform.GetComponent<Rigidbody2D>().velocity = thisVelocity;
-            rb.velocity = new Vector2(0, 0);
+            colObjectSpeed = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             //PHYSICS
 
             //
@@ -116,6 +116,8 @@ public class Puck : MonoBehaviour
             else
                 newId = 1;
             SwitchOwner(newId);
+            rb.velocity = colObjectSpeed;
+            colObjectSpeed = Vector2.zero;
             changeOwnerNextUpdate = false;
         }
         if (idle)
