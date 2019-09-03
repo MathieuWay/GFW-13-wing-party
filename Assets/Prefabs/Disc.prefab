@@ -137,4 +137,5 @@ MonoBehaviour:
   idleTime: 0
   idleCooldown: 5
   idleSpeed: 10
+  startIdleBelowSpeed: 1
   speed: 50

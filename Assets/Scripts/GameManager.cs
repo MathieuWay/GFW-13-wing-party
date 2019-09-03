@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int spawnAreaHeight;
     public int deadZone;
 
+    public bool debug;
+
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -31,11 +33,13 @@ public class GameManager : MonoBehaviour
     {
         playerOne = new Player(1);
         playerTwo = new Player(2);
-
-        for (int i = 0; i < 4; i++)
+        if (!debug)
         {
-            SpawnPuck(1);
-            SpawnPuck(2);
+            for (int i = 0; i < 4; i++)
+            {
+                SpawnPuck(1);
+                SpawnPuck(2);
+            }
         }
     }
 
