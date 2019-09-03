@@ -13,6 +13,7 @@ public class TriggerGoal : MonoBehaviour
             //TODO If puck is different color from triggerOwner
             if (id != puckId)
             {
+                SoundManager.instance.PlayGoalSFX();
                 GameManager.Instance.AddScore(puckId, 1);
             }
             GameObject.Destroy(collision.gameObject);
