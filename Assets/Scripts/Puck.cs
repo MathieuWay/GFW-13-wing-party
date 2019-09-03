@@ -21,6 +21,7 @@ public class Puck : MonoBehaviour
     private Vector3 mousePosition;
     private Vector2 direction;
     private bool followFinger;
+    public float airResistence;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class Puck : MonoBehaviour
 
     void Update()
     {
+        rb.drag = airResistence;
         if (followFinger)
         {
             MoveWithMouse();
@@ -85,9 +87,9 @@ public class Puck : MonoBehaviour
         else if(collision.gameObject.tag == "Puck")
         {
             collisionId = collision.gameObject.GetComponent<Puck>().GetId();
-            Vector2 thisVelocity = rb.velocity;
+            /*Vector2 thisVelocity = rb.velocity;
             collision.transform.GetComponent<Rigidbody2D>().velocity = thisVelocity;
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = new Vector2(0, 0);*/
             //PHYSICS
 
             //

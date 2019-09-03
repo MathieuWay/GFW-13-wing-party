@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1990458037371367313}
   - component: {fileID: 1990458037371367314}
   - component: {fileID: 1990458037371367315}
-  - component: {fileID: 1990458037371367317}
   - component: {fileID: -8065953745730566342}
   m_Layer: 0
   m_Name: Disc
@@ -121,19 +120,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1990458037371367317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990458037371367342}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c2cc85ce833d74a9c2c58819357041, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 100
 --- !u!114 &-8065953745730566342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +138,4 @@ MonoBehaviour:
   idleCooldown: 5
   idleSpeed: 3
   speed: 100
+  airResistence: 0.5
