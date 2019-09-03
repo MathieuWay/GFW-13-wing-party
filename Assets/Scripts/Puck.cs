@@ -21,7 +21,6 @@ public class Puck : MonoBehaviour
     private Vector3 mousePosition;
     private Vector2 direction;
     private bool followFinger;
-    public float airResistence;
 
     private void Start()
     {
@@ -43,7 +42,6 @@ public class Puck : MonoBehaviour
 
     void Update()
     {
-        rb.drag = airResistence;
         if (followFinger)
         {
             MoveWithMouse();
