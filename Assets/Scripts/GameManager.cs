@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
     {
         playerOne = new Player(1);
         playerTwo = new Player(2);
+
+        for (int i = 0; i < 4; i++)
+        {
+            SpawnPuck(1);
+            SpawnPuck(2);
+        }
     }
 
     // Update is called once per frame

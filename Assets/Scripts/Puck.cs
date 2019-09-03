@@ -5,13 +5,19 @@ using UnityEngine;
 public class Puck : MonoBehaviour
 {
     public int id;
+    //idle
+    private bool idle;
+    private float idleTime;
+    private Vector2 direction;
+    public float idleCooldown;
+
     private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        idle = true;
     }
 
     public void SetId(int id)
@@ -68,6 +74,19 @@ public class Puck : MonoBehaviour
             SwitchOwner(newId);
             changeOwnerNextUpdate = false;
         }
+        if (idle)
+        {
+            idleTime += Time.deltaTime;
+            if (idleTime >= idleCooldown)
+            {
+                direction = RandomDirection();
+            }
+        }
+    }
+
+    private Vector2 RandomDirection()
+    {
+        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
     }
 
 
