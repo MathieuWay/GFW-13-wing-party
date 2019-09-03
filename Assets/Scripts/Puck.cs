@@ -125,16 +125,14 @@ public class Puck : MonoBehaviour
     private void StartIdle()
     {
         if (!this.idle)
-        {
             idle = true;
-            if(transform.position.x < 0f)
-            {
-                SwitchOwner(1);
-            }
-            else
-            {
-                SwitchOwner(2);
-            }
+        if (transform.position.x < 0f)
+        {
+            SwitchOwner(1);
+        }
+        else
+        {
+            SwitchOwner(2);
         }
         idleDirection = RandomDirection();
         idleTime = 0;
