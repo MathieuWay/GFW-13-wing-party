@@ -5,6 +5,7 @@ using UnityEngine;
 public class Puck : MonoBehaviour
 {
     public int id;
+    public bool followFinger;
     //idle
     public bool idle;
     public float idleTime;
@@ -12,24 +13,19 @@ public class Puck : MonoBehaviour
     public float idleCooldown;
     public float idleSpeed;
     public float startIdleBelowSpeed;
+    private Vector2 colObjectSpeed;
 
     private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
 
     //physics
     private Rigidbody2D rb;
-    public float speed;
-    private Vector3 mousePosition;
-    private Vector2 direction;
-    private bool followFinger;
-    private Vector2 colObjectSpeed;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         StartIdle();
-        followFinger = false;
     }
 
     public void SetId(int id)
@@ -40,36 +36,6 @@ public class Puck : MonoBehaviour
     public int GetId()
     {
         return id;
-    }
-
-    void Update()
-    {
-        if (followFinger)
-        {
-            MoveWithMouse();
-        }
-    }
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            followFinger = true;
-        }
-    }
-    void MoveWithMouse()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if (idle)
-                idle = false;
-            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            direction = (mousePosition - transform.position).normalized;
-            rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
-        }
-        else
-        {
-            followFinger = false;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -152,8 +118,18 @@ public class Puck : MonoBehaviour
 
     private void StartIdle()
     {
-        if(!this.idle)
-        idle = true;
+        if (!this.idle)
+        {
+            idle = true;
+            if(transform.position.x < 0)
+            {
+                SwitchOwner(1);
+            }
+            else
+            {
+                SwitchOwner(2);
+            }
+        }
         idleDirection = RandomDirection();
         idleTime = 0;
     }
