@@ -5,11 +5,13 @@ using UnityEngine;
 public class Puck : MonoBehaviour
 {
     public int id;
+    private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     public void SetId(int id)
@@ -24,14 +26,13 @@ public class Puck : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("collision my id:"+this.id+ "colliding with id:"+ collision.gameObject.GetComponent<Puck>().GetId());
         int collisionId = 0;
         if(collision.gameObject.tag == "Wall")
         {
             collisionId = collision.gameObject.GetComponent<Wall>().GetId();
 
             if (id != collisionId)
-                SwitchOwner(collisionId);
+                changeOwnerNextUpdate = true;
             else
             {
 
@@ -40,10 +41,9 @@ public class Puck : MonoBehaviour
         else if(collision.gameObject.tag == "Puck")
         {
             collisionId = collision.gameObject.GetComponent<Puck>().GetId();
-            Debug.Log(collisionId);
 
             if (id != collisionId)
-                SwitchOwner(collisionId);
+                changeOwnerNextUpdate = true;
             else
             {
 
@@ -55,7 +55,21 @@ public class Puck : MonoBehaviour
             return;
         }
     }
-    
+
+    private void LateUpdate()
+    {
+        if (changeOwnerNextUpdate)
+        {
+            int newId = 0;
+            if (id == 1)
+                newId = 2;
+            else
+                newId = 1;
+            SwitchOwner(newId);
+            changeOwnerNextUpdate = false;
+        }
+    }
+
 
     public void SwitchOwner(int newOwner)
     {

@@ -16,6 +16,7 @@ public class TriggerGoal : MonoBehaviour
                 GameManager.Instance.AddScore(puckId, 1);
             }
             GameObject.Destroy(collision.gameObject);
+            GameManager.Instance.SpawnPuck(puckId);
         }
     }
 }
