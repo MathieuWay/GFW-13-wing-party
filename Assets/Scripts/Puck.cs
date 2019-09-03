@@ -14,10 +14,19 @@ public class Puck : MonoBehaviour
     private bool changeOwnerNextUpdate;
     private SpriteRenderer spriteRenderer;
 
+    //physics
+    private Rigidbody2D rb;
+    public float speed;
+    private Vector3 mousePosition;
+    private Vector2 direction;
+    private bool followFinger;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         idle = true;
+        rb = GetComponent<Rigidbody2D>();
+        followFinger = false;
     }
 
     public void SetId(int id)
@@ -28,6 +37,34 @@ public class Puck : MonoBehaviour
     public int GetId()
     {
         return id;
+    }
+
+    void Update()
+    {
+        if (followFinger)
+        {
+            MoveWithMouse();
+        }
+    }
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            followFinger = true;
+        }
+    }
+    void MoveWithMouse()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = (mousePosition - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
+        }
+        else
+        {
+            followFinger = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +84,13 @@ public class Puck : MonoBehaviour
         else if(collision.gameObject.tag == "Puck")
         {
             collisionId = collision.gameObject.GetComponent<Puck>().GetId();
+            Vector2 thisVelocity = rb.velocity;
+            collision.transform.GetComponent<Rigidbody2D>().velocity = thisVelocity;
+            rb.velocity = new Vector2(0, 0);
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            //PHYSICS
+
+            //
 
             if (id != collisionId)
                 changeOwnerNextUpdate = true;
