@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     private bool onPause;
     private Player playerOne;
+
     private Player playerTwo;
+    public GameObject playerTwoTarget;
     public int specialPuckSpawnChance;
     public GameObject puckPrefabs;
     public int spawnAreaWidth;
