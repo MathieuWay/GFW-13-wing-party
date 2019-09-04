@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     private Player playerOne;
 
     private Player playerTwo;
-    public GameObject playerTwoTarget;
+    public int minPuckPerSide;
+    public int maxPuckPerSide;
     public int specialPuckSpawnChance;
     public GameObject puckPrefabs;
     public int spawnAreaWidth;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         playerTwo = new Player(2);
         if (!debug)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < minPuckPerSide; i++)
             {
                 SpawnPuck(1);
                 SpawnPuck(2);
@@ -56,11 +57,19 @@ public class GameManager : MonoBehaviour
     {
         BlockTiming(playerOne, blockPlayer1);
         BlockTiming(playerTwo, blockPlayer2);
-        if (countPuckOnSide(1) < 4)
+        int PuckSide = 0;
+        PuckSide = countPuckOnSide(1);
+        if (PuckSide < minPuckPerSide)
             SpawnPuck(1);
+        else if (PuckSide > maxPuckPerSide)
+            DespawnPuck(1);
 
-        if (countPuckOnSide(2) < 4)
+        PuckSide = countPuckOnSide(2);
+        if (countPuckOnSide(2) < minPuckPerSide)
             SpawnPuck(2);
+        else if (PuckSide > maxPuckPerSide)
+            DespawnPuck(2);
+
     }
 
     public void BlockTiming(Player player, GameObject block)
@@ -138,6 +147,15 @@ public class GameManager : MonoBehaviour
         {
             newPuck.SetSpecialPuck();
         }
+    }
+
+    public void DespawnPuck(int owner)
+    {
+        Debug.Log("despawn");
+        Puck[] pucks = GameObject.FindObjectsOfType<Puck>();
+        int i=0;
+        while (pucks[i].GetId() != owner) i++;
+        Destroy(pucks[i].gameObject);
     }
 
     private int countPuckOnSide(int id)

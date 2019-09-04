@@ -1286,8 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a3358d5e160447832b29f4384af2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  playerOneTarget: {fileID: 0}
+  speed: 60
   playerTwoTarget: {fileID: 0}
 --- !u!4 &530967801
 Transform:
@@ -2082,7 +2081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec858081b0fd9584996bb3ecf0331e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTwoTarget: {fileID: 0}
+  minPuckPerSide: 0
+  maxPuckPerSide: 0
   specialPuckSpawnChance: 20
   puckPrefabs: {fileID: 1990458037371367342, guid: 89a5befdc38fffc4b8f115e55e26cbe2,
     type: 3}
