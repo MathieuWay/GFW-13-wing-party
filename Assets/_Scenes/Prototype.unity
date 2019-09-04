@@ -11082,6 +11082,10 @@ MonoBehaviour:
   spawnAreaWidth: 14
   spawnAreaHeight: 6
   deadZone: 1
+  BlockMaxDuration: 0
+  BlockCoolDown: 0
+  blockPlayer1: {fileID: 0}
+  blockPlayer2: {fileID: 0}
   debug: 1
 --- !u!1 &1094707282
 GameObject:
@@ -12522,6 +12526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePlayerOne: {fileID: 1600022157}
   scorePlayerTwo: {fileID: 37360492}
+  BlockButtonPlayerOne: {fileID: 0}
+  BlockButtonPlayerTwo: {fileID: 0}
 --- !u!1 &1252417027
 GameObject:
   m_ObjectHideFlags: 0
@@ -14716,8 +14722,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1428407410}
   - component: {fileID: 1428407409}
+  - component: {fileID: 1428407411}
   m_Layer: 0
-  m_Name: blue pengouin spritesheet 5_0
+  m_Name: Blue Pingouin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14787,6 +14794,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1428407411
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428407408}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a26a71e8da57dd3488cf819fa6c230c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1433706268
 GameObject:
   m_ObjectHideFlags: 0
