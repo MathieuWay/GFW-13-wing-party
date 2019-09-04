@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI scorePlayerOne;
     public TextMeshProUGUI scorePlayerTwo;
+
+    public Button BlockButtonPlayerOne;
+    public Button BlockButtonPlayerTwo;
 
     private static UIManager instance;
     public static UIManager Instance
@@ -31,5 +35,44 @@ public class UIManager : MonoBehaviour
         {
             scorePlayerTwo.text = amount.ToString();
         }
+    }
+
+    public void SetBlockButtonState(int id, bool state)
+    {
+        if (id == 1)
+        {
+            BlockButtonPlayerOne.enabled = state;
+            if (state)
+                BlockButtonPlayerOne.GetComponentInChildren<Text>().text = "Ready";
+        }
+        else
+        {
+            BlockButtonPlayerTwo.enabled = state;
+            if (state)
+                BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = "Ready";
+        }
+    }
+
+    public void UpdateBlockCooldown(int id, float time)
+    {
+        if (id == 1)
+            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = (GameManager.Instance.BlockCoolDown - time).ToString();
+        else
+            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = (GameManager.Instance.BlockCoolDown - time).ToString();
+    }
+
+    public void StartBlock(int id)
+    {
+        if(id == 1)
+        {
+            SetBlockButtonState(id, false);
+            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = "ACTIVATED";
+        }
+        else
+        {
+            SetBlockButtonState(id, false);
+            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = "ACTIVATED";
+        }
+
     }
 }

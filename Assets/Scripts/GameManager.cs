@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     public int spawnAreaHeight;
     public int deadZone;
 
+    //Special
+    public float BlockMaxDuration;
+    public float BlockCoolDown;
+    public GameObject blockPlayer1;
+    public GameObject blockPlayer2;
+
     public bool debug;
 
     private static GameManager instance;
@@ -46,7 +52,37 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        BlockTiming(playerOne, blockPlayer1);
+        BlockTiming(playerTwo, blockPlayer2);
+    }
+
+    public void BlockTiming(Player player, GameObject block)
+    {
+        if (player.GetBlockActivated())
+        {
+            float duration = player.GetBlockDuration();
+            if (duration < BlockMaxDuration)
+                player.SetBlockDuration(duration + Time.deltaTime);
+            else
+            {
+                player.SetBlockActivated(false);
+                block.SetActive(false);
+            }
+        }
+        else
+        {
+            float downtime = player.GetDowntime();
+            if (downtime < BlockCoolDown)
+            {
+                float downTime = downtime + Time.deltaTime;
+                player.SetDowntime(downTime);
+                UIManager.Instance.UpdateBlockCooldown(player.GetId(), downTime);
+            }
+            else
+            {
+                UIManager.Instance.SetBlockButtonState(player.GetId(), true);
+            }
+        }
     }
 
     public void TriggerWin(int id)
@@ -100,5 +136,28 @@ public class GameManager : MonoBehaviour
     public int countPuckOnSide()
     {
         return 0;
+    }
+
+    public void TriggerBlock(int id)
+    {
+        if(id == 1)
+        {
+            if (playerOne.GetDowntime() >= BlockCoolDown)
+                StartBlock(playerOne, blockPlayer1);
+        }
+        else
+        {
+            if (playerTwo.GetDowntime() >= BlockCoolDown)
+                StartBlock(playerTwo, blockPlayer2);
+        }
+    }
+
+    public void StartBlock(Player player, GameObject block)
+    {
+        player.SetBlockActivated(true);
+        player.SetBlockDuration(0f);
+        player.SetDowntime(0);
+        UIManager.Instance.StartBlock(player.GetId());
+        block.SetActive(true);
     }
 }
