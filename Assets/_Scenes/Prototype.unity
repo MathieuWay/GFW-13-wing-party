@@ -11681,7 +11681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPuckPerSide: 4
   maxPuckPerSide: 8
-  specialPuckSpawnChance: 0
+  specialPuckSpawnChance: 2
   puckPrefabs: {fileID: 2480132529712467648, guid: 506f20d6eb293ed4884cee8b58cd9e75,
     type: 3}
   spawnAreaWidth: 14
@@ -11694,6 +11694,8 @@ MonoBehaviour:
   blockPlayer2: {fileID: 500877838}
   bluePuck: {fileID: 9100000, guid: a26a71e8da57dd3488cf819fa6c230c0, type: 2}
   RedPuck: {fileID: 9100000, guid: 2c9a2112153654640966ba44c44b0771, type: 2}
+  blueMaskedPuck: {fileID: 9100000, guid: 4dc0bf10d0a0e6a4fb7866b00da63882, type: 2}
+  RedMaskedPuck: {fileID: 9100000, guid: fcf797d8abf62194c85365125c415e38, type: 2}
   debug: 1
 --- !u!1 &1094707282
 GameObject:

@@ -146,6 +146,7 @@ MonoBehaviour:
   idleSpeed: 10
   startIdleBelowSpeed: 1
   animator: {fileID: 0}
+  trail: {fileID: 0}
 --- !u!58 &3899809421742785489
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

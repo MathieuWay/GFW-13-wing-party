@@ -177,7 +177,8 @@ public class Puck : MonoBehaviour
             this.id = 1;
             //animator.runtimeAnimatorController = GameManager.Instance.bluePuckController
             if (specialPuck)
-                spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
+                animator.runtimeAnimatorController = GameManager.Instance.blueMaskedPuck;
+            //spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
             else
                 animator.runtimeAnimatorController = GameManager.Instance.bluePuck;
                 //spriteRenderer.color = Color.blue;
@@ -187,7 +188,8 @@ public class Puck : MonoBehaviour
             //red
             this.id = 2;
             if(specialPuck)
-                spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
+                animator.runtimeAnimatorController = GameManager.Instance.RedMaskedPuck;
+            //spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
             else
                 animator.runtimeAnimatorController = GameManager.Instance.RedPuck;
             //spriteRenderer.color = Color.red;
