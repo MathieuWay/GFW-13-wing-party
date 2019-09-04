@@ -45,15 +45,15 @@ public class Puck : MonoBehaviour
         int collisionId = 0;
         if(collision.gameObject.tag == "Wall")
         {
-            //collisionId = collision.gameObject.GetComponent<Wall>().GetId();
-            SoundManager.instance.PlayBounceSFX();
+            collisionId = collision.gameObject.GetComponent<Wall>().GetId();
+            //SoundManager.instance.PlayBounceSFX();
 
-            /*if (id != collisionId)
+            if (id != collisionId)
                 changeOwnerNextUpdate = true;
             else
             {
 
-            }*/
+            }
         }
         else if(collision.gameObject.tag == "Puck")
         {
