@@ -2091,6 +2091,7 @@ MonoBehaviour:
   deadZone: 1
   BlockMaxDuration: 5
   BlockCoolDown: 5
+  incrementCooldown: 2
   blockPlayer1: {fileID: 61340023}
   blockPlayer2: {fileID: 468878411}
   debug: 0

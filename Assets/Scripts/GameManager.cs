@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     //Special
     public float BlockMaxDuration;
     public float BlockCoolDown;
+    public float incrementCooldown;
     public GameObject blockPlayer1;
     public GameObject blockPlayer2;
 
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
             {
                 player.SetBlockActivated(false);
                 block.SetActive(false);
-                BlockCoolDown += 2f;
+                BlockCoolDown += incrementCooldown;
             }
         }
         else
