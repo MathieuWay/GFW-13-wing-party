@@ -11681,7 +11681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPuckPerSide: 4
   maxPuckPerSide: 8
-  specialPuckSpawnChance: 2
+  specialPuckSpawnChance: 8
   puckPrefabs: {fileID: 2480132529712467648, guid: 506f20d6eb293ed4884cee8b58cd9e75,
     type: 3}
   spawnAreaWidth: 14

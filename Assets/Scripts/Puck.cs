@@ -201,9 +201,9 @@ public class Puck : MonoBehaviour
         value = 3;
         specialPuck = true;
         if(id == 1)
-            spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
+            animator.runtimeAnimatorController = GameManager.Instance.blueMaskedPuck;
         else
-            spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
+            animator.runtimeAnimatorController = GameManager.Instance.RedMaskedPuck;
 
     }
 
