@@ -24,13 +24,15 @@ public class Puck : MonoBehaviour
     private Rigidbody2D rb;
     //animation
     public Animator animator;
+    //trail
+    public TrailRenderer trail;
 
     private void Awake()
     {
-
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        trail = GetComponent<TrailRenderer>();
     }
 
     private void Start()
@@ -145,6 +147,7 @@ public class Puck : MonoBehaviour
         {
             idle = true;
             animator.SetBool("Idle", true);
+            trail.enabled = false;
             //animator idle true
         }
         if (transform.position.x < 0f)
