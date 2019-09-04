@@ -209,6 +209,7 @@ public class TouchLink
 
         this.Puck.idle = false;
         this.Puck.animator.SetBool("Idle", false);
+        this.Puck.trail.enabled = true;
         //animator idle false
         this.Puck.followFinger = true;
     }
