@@ -97,6 +97,7 @@ public class TouchPlayer : MonoBehaviour
                     break;
 
             }
+        }
             /*foreach (Touch touch in Input.touches)
             {
                 if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
@@ -124,7 +125,7 @@ public class TouchPlayer : MonoBehaviour
 
                 }
             }*/
-#endif
+#endif  
 
         for (int j = 0; j < touches.Length; j++)
         {
