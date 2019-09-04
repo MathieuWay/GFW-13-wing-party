@@ -143,21 +143,21 @@ public class GameManager : MonoBehaviour
         if(id == 1)
         {
             if (playerOne.GetDowntime() >= BlockCoolDown)
-                StartBlock(playerOne);
+                StartBlock(playerOne, blockPlayer1);
         }
         else
         {
             if (playerTwo.GetDowntime() >= BlockCoolDown)
-                StartBlock(playerTwo);
+                StartBlock(playerTwo, blockPlayer2);
         }
     }
 
-    public void StartBlock(Player player)
+    public void StartBlock(Player player, GameObject block)
     {
         player.SetBlockActivated(true);
         player.SetBlockDuration(0f);
         player.SetDowntime(0);
         UIManager.Instance.StartBlock(player.GetId());
-        blockPlayer1.SetActive(true);
+        block.SetActive(true);
     }
 }
