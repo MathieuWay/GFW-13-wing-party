@@ -4168,8 +4168,6 @@ MonoBehaviour:
   text3: {fileID: 993057423}
   text4: {fileID: 465447530}
   tutorialPopUp: {fileID: 217859781}
-  HUD: {fileID: 793730328}
-  timer: {fileID: 1894961886}
 --- !u!4 &1951278565
 Transform:
   m_ObjectHideFlags: 0
