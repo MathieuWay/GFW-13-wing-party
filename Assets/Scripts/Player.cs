@@ -6,7 +6,6 @@ public class Player
     private static readonly int winScoreCondition = 10;
     private readonly int id;
     private int score;
-
     private bool blockActivated;
     private float blockCooldown;
     private float blockDuration;
