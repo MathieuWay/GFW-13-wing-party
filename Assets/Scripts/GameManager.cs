@@ -56,6 +56,11 @@ public class GameManager : MonoBehaviour
     {
         BlockTiming(playerOne, blockPlayer1);
         BlockTiming(playerTwo, blockPlayer2);
+        if (countPuckOnSide(1) < 4)
+            SpawnPuck(1);
+
+        if (countPuckOnSide(2) < 4)
+            SpawnPuck(2);
     }
 
     public void BlockTiming(Player player, GameObject block)
@@ -135,9 +140,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int countPuckOnSide()
+    private int countPuckOnSide(int id)
     {
-        return 0;
+        Puck[] pucks = GameObject.FindObjectsOfType<Puck>();
+        int count = 0;
+        foreach(Puck puck in pucks)
+        {
+            if (id == puck.GetId())
+                count++;
+        }
+        return count;
     }
 
     public void TriggerBlock(int id)
