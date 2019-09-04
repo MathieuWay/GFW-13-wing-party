@@ -40,7 +40,7 @@ public class ScoreScript : MonoBehaviour
             numberofrounds=numberofrounds+1;
         }
         }
-        Debug.Log("This is round number " + numberofrounds);
+        Debug.Log("This round's number is" + numberofrounds);
         if(equality==true){
             equality=false;
             Debug.Log("There was a tie in the previous round");
