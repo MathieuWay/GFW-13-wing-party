@@ -7,18 +7,12 @@ public class TutorialSystem : MonoBehaviour
     private int countdown=0;
     private int skipcount_p1=0;
     private int skipcount_p2=0;
-    public static bool tutorialskipped=false;
-    public GameObject text1, text2, text3, text4, tutorialPopUp, HUD, timer;
+    public GameObject text1, text2, text3, text4, tutorialPopUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(tutorialskipped==true){
-            tutorialPopUp.SetActive(false);
-            HUD.SetActive(true);
-            timer.SetActive(true);
-            
-        }
+
     }
 
     // Update is called once per frame
@@ -43,10 +37,9 @@ public class TutorialSystem : MonoBehaviour
             text4.SetActive(true);
         }
         if(countdown==4){
-            tutorialPopUp.SetActive(false);
-            HUD.SetActive(true);
-            timer.SetActive(true);
-            tutorialskipped=true;
+            
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            //ici remplacer 0 par le numéro de la scène de jeu dans les build settings
         }
     }
 
