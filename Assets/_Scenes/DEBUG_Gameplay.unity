@@ -332,6 +332,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &35743783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1441515767590022884, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1159.4863
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022886, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0597bd06c4c02643ad39e47b117e0b1, type: 3}
 --- !u!1 &37360490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  playerOneTarget: {fileID: 0}
+  playerTwoTarget: {fileID: 0}
 --- !u!4 &530967801
 Transform:
   m_ObjectHideFlags: 0
@@ -2011,6 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec858081b0fd9584996bb3ecf0331e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTwoTarget: {fileID: 0}
   specialPuckSpawnChance: 20
   puckPrefabs: {fileID: 1990458037371367342, guid: 89a5befdc38fffc4b8f115e55e26cbe2,
     type: 3}
