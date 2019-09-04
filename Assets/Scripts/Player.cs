@@ -8,12 +8,14 @@ public class Player
     private int score;
     private bool blockActivated;
     private float blockCooldown;
+    private float blockCooldownDelay;
     private float blockDuration;
 
     public Player(int id)
     {
         this.id = id;
         this.score = 0;
+        this.blockCooldownDelay = 0;
     }
 
     public void AddScore(int amount)
@@ -61,5 +63,15 @@ public class Player
     public void SetDowntime(float time)
     {
         blockCooldown = time;
+    }
+
+    public float GetDowntimeBonus()
+    {
+        return this.blockCooldownDelay;
+    }
+
+    public void SetDowntimeBonus(float time)
+    {
+        blockCooldownDelay = time;
     }
 }

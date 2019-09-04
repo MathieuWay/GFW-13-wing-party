@@ -84,13 +84,13 @@ public class GameManager : MonoBehaviour
             {
                 player.SetBlockActivated(false);
                 block.SetActive(false);
-                BlockCoolDown += incrementCooldown;
+                player.SetDowntimeBonus(player.GetDowntimeBonus() + incrementCooldown);
             }
         }
         else
         {
             float downtime = player.GetDowntime();
-            if (downtime < BlockCoolDown)
+            if (downtime < (BlockCoolDown + player.GetDowntimeBonus()))
             {
                 float downTime = downtime + Time.deltaTime;
                 player.SetDowntime(downTime);
@@ -192,5 +192,13 @@ public class GameManager : MonoBehaviour
         player.SetDowntime(0);
         UIManager.Instance.StartBlock(player.GetId());
         block.SetActive(true);
+    }
+
+    public Player GetPlayer(int id)
+    {
+        if (id == 1)
+            return playerOne;
+        else
+            return playerTwo;
     }
 }
