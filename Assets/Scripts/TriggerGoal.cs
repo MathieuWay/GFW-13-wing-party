@@ -15,7 +15,7 @@ public class TriggerGoal : MonoBehaviour
             if (id != puckId)
             {
                 GameManager.Instance.AddScore(puckId, puck.GetValue());
-                SoundManager.instance.PlayGoalSFX();
+                //SoundManager.instance.PlayGoalSFX();
             }
             GameObject.Destroy(collision.gameObject);
             GameManager.Instance.SpawnPuck(puckId);
