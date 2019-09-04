@@ -7,18 +7,12 @@ public class TutorialSystem : MonoBehaviour
     private int countdown=0;
     private int skipcount_p1=0;
     private int skipcount_p2=0;
-    public static bool tutorialskipped=false;
-    public GameObject text1, text2, text3, text4, tutorialPopUp, HUD, timer;
+    public GameObject text1, text2, text3, text4, text5, tutorialPopUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(tutorialskipped==true){
-            tutorialPopUp.SetActive(false);
-            HUD.SetActive(true);
-            timer.SetActive(true);
-            
-        }
+
     }
 
     // Update is called once per frame
@@ -42,11 +36,15 @@ public class TutorialSystem : MonoBehaviour
             text3.SetActive(false);
             text4.SetActive(true);
         }
+
         if(countdown==4){
-            tutorialPopUp.SetActive(false);
-            HUD.SetActive(true);
-            timer.SetActive(true);
-            tutorialskipped=true;
+            text4.SetActive(false);
+            text5.SetActive(true);
+        }
+        if(countdown==5){
+            
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            //ici remplacer 0 par le numéro de la scène de jeu dans les build settings
         }
     }
 
@@ -65,6 +63,10 @@ public class TutorialSystem : MonoBehaviour
             skipcount_p1=4;
         }
 
+        if(countdown==4){
+            skipcount_p1=5;
+        }
+
     }
 
     public void Skip_p2(){
@@ -80,6 +82,9 @@ public class TutorialSystem : MonoBehaviour
         }
         if(countdown==3){
             skipcount_p2=4;
+        }
+        if(countdown==4){
+            skipcount_p2=5;
         }
 }
 

@@ -35,15 +35,15 @@ public class ScoreScript : MonoBehaviour
         scoreValue_p1=0;
         scoreValue_p2=0;
         score = GetComponent<Text>();
-        if (score.tag == "Player1" && equality==false)
+        if (score.tag == "Player1")if(equality==false){
         {
             numberofrounds=numberofrounds+1;
         }
-        Debug.Log("This is round number " + numberofrounds);
+        }
+        Debug.Log("This round's number is" + numberofrounds);
         if(equality==true){
             equality=false;
-            numberofrounds=numberofrounds-1;
-            Debug.Log("There was an tie in the previous round");
+            Debug.Log("There was a tie in the previous round");
         }
 
     }

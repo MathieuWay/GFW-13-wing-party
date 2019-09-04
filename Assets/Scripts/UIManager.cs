@@ -55,10 +55,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBlockCooldown(int id, float time)
     {
+        float cooldownMax = GameManager.Instance.BlockCoolDown + GameManager.Instance.GetPlayer(id).GetDowntimeBonus();
         if (id == 1)
-            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = (GameManager.Instance.BlockCoolDown - time).ToString();
+            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = (cooldownMax - time).ToString();
         else
-            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = (GameManager.Instance.BlockCoolDown - time).ToString();
+            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = (cooldownMax - time).ToString();
     }
 
     public void StartBlock(int id)

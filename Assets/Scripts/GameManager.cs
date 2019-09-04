@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     private Player playerOne;
 
     private Player playerTwo;
-    public GameObject playerTwoTarget;
+    public int minPuckPerSide;
+    public int maxPuckPerSide;
     public int specialPuckSpawnChance;
     public GameObject puckPrefabs;
     public int spawnAreaWidth;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     //Special
     public float BlockMaxDuration;
     public float BlockCoolDown;
+    public float incrementCooldown;
     public GameObject blockPlayer1;
     public GameObject blockPlayer2;
 
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
         playerTwo = new Player(2);
         if (!debug)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < minPuckPerSide; i++)
             {
                 SpawnPuck(1);
                 SpawnPuck(2);
@@ -59,6 +61,19 @@ public class GameManager : MonoBehaviour
     {
         BlockTiming(playerOne, blockPlayer1);
         BlockTiming(playerTwo, blockPlayer2);
+        int PuckSide = 0;
+        PuckSide = countPuckOnSide(1);
+        if (PuckSide < minPuckPerSide)
+            SpawnPuck(1);
+        else if (PuckSide > maxPuckPerSide)
+            DespawnPuck(1);
+
+        PuckSide = countPuckOnSide(2);
+        if (countPuckOnSide(2) < minPuckPerSide)
+            SpawnPuck(2);
+        else if (PuckSide > maxPuckPerSide)
+            DespawnPuck(2);
+
     }
 
     public void BlockTiming(Player player, GameObject block)
@@ -72,12 +87,13 @@ public class GameManager : MonoBehaviour
             {
                 player.SetBlockActivated(false);
                 block.SetActive(false);
+                player.SetDowntimeBonus(player.GetDowntimeBonus() + incrementCooldown);
             }
         }
         else
         {
             float downtime = player.GetDowntime();
-            if (downtime < BlockCoolDown)
+            if (downtime < (BlockCoolDown + player.GetDowntimeBonus()))
             {
                 float downTime = downtime + Time.deltaTime;
                 player.SetDowntime(downTime);
@@ -138,9 +154,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int countPuckOnSide()
+    public void DespawnPuck(int owner)
     {
-        return 0;
+        Puck[] pucks = GameObject.FindObjectsOfType<Puck>();
+        int i=0;
+        while (pucks[i].GetId() != owner) i++;
+        Destroy(pucks[i].gameObject);
+    }
+
+    private int countPuckOnSide(int id)
+    {
+        Puck[] pucks = GameObject.FindObjectsOfType<Puck>();
+        int count = 0;
+        foreach(Puck puck in pucks)
+        {
+            if (id == puck.GetId())
+                count++;
+        }
+        return count;
     }
 
     public void TriggerBlock(int id)
@@ -164,5 +195,13 @@ public class GameManager : MonoBehaviour
         player.SetDowntime(0);
         UIManager.Instance.StartBlock(player.GetId());
         block.SetActive(true);
+    }
+
+    public Player GetPlayer(int id)
+    {
+        if (id == 1)
+            return playerOne;
+        else
+            return playerTwo;
     }
 }

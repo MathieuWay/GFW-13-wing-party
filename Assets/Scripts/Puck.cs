@@ -71,7 +71,6 @@ public class Puck : MonoBehaviour
         {
             Puck collidedpuck = collision.gameObject.GetComponent<Puck>();
             collisionId = collidedpuck.GetId();
-            Vector2 thisVelocity = rb.velocity;
             //PHYSICS
             collidedpuck.PuckCollision(idle);
             //
