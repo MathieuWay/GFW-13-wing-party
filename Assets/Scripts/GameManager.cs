@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
             {
                 player.SetBlockActivated(false);
                 block.SetActive(false);
+                BlockCoolDown += 2f;
             }
         }
         else
@@ -151,7 +152,6 @@ public class GameManager : MonoBehaviour
 
     public void DespawnPuck(int owner)
     {
-        Debug.Log("despawn");
         Puck[] pucks = GameObject.FindObjectsOfType<Puck>();
         int i=0;
         while (pucks[i].GetId() != owner) i++;

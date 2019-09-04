@@ -2081,9 +2081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec858081b0fd9584996bb3ecf0331e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPuckPerSide: 0
-  maxPuckPerSide: 0
-  specialPuckSpawnChance: 20
+  minPuckPerSide: 4
+  maxPuckPerSide: 8
+  specialPuckSpawnChance: 10
   puckPrefabs: {fileID: 1990458037371367342, guid: 89a5befdc38fffc4b8f115e55e26cbe2,
     type: 3}
   spawnAreaWidth: 14
