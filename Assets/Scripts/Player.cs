@@ -7,6 +7,10 @@ public class Player
     private readonly int id;
     private int score;
 
+    private bool blockActivated;
+    private float blockCooldown;
+    private float blockDuration;
+
     public Player(int id)
     {
         this.id = id;
@@ -23,5 +27,40 @@ public class Player
     public int GetScore()
     {
         return this.score;
+    }
+
+    public int GetId()
+    {
+        return this.id;
+    }
+
+    public bool GetBlockActivated()
+    {
+        return this.blockActivated;
+    }
+
+    public void SetBlockActivated(bool state)
+    {
+        blockActivated = state;
+    }
+
+    public float GetBlockDuration()
+    {
+        return this.blockDuration;
+    }
+
+    public void SetBlockDuration(float time)
+    {
+        blockDuration = time;
+    }
+
+    public float GetDowntime()
+    {
+        return this.blockCooldown;
+    }
+
+    public void SetDowntime(float time)
+    {
+        blockCooldown = time;
     }
 }

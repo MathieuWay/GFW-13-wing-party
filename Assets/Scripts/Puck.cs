@@ -5,6 +5,8 @@ using UnityEngine;
 public class Puck : MonoBehaviour
 {
     public int id;
+    private int value = 1;
+    private bool specialPuck;
     public bool followFinger;
     //idle
     public bool idle;
@@ -44,6 +46,7 @@ public class Puck : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             collisionId = collision.gameObject.GetComponent<Wall>().GetId();
+            SoundManager.instance.PlayBounceSFX();
 
             if (id != collisionId)
                 changeOwnerNextUpdate = true;
@@ -51,6 +54,10 @@ public class Puck : MonoBehaviour
             {
 
             }
+        }
+        else if (collision.gameObject.tag == "Grey Wall")
+        {
+            SoundManager.instance.PlayBounceSFX();
         }
         else if(collision.gameObject.tag == "Puck")
         {
@@ -151,13 +158,35 @@ public class Puck : MonoBehaviour
         {
             //blue
             this.id = 1;
-            spriteRenderer.color = Color.blue;
+            if (specialPuck)
+                spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
+            else
+                spriteRenderer.color = Color.blue;
         }
         else
         {
             //red
             this.id = 2;
-            spriteRenderer.color = Color.red;
+            if(specialPuck)
+                spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
+            else
+                spriteRenderer.color = Color.red;
         }
+    }
+
+    public void SetSpecialPuck()
+    {
+        value = 3;
+        specialPuck = true;
+        if(id == 1)
+            spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
+        else
+            spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
+
+    }
+
+    public int GetValue()
+    {
+        return value;
     }
 }

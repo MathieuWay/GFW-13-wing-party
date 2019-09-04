@@ -24,15 +24,5 @@ public void Resume(){
     
 }
 
-public void LoadMenu(string nameScene)
-{
-    UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
-}
-
-public void QuitGame()
-{
-    Application.Quit();
-    Debug.Log("You quit the game");
-}
 
 }

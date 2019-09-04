@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Puck
   - Wall
+  - Grey Wall
   layers:
   - Default
   - TransparentFX
