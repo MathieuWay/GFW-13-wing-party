@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public GameObject blockPlayer1;
     public GameObject blockPlayer2;
 
+    public RuntimeAnimatorController bluePuck;
+    public RuntimeAnimatorController RedPuck;
+
     public bool debug;
 
     private static GameManager instance;

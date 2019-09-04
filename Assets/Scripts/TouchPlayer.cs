@@ -224,6 +224,8 @@ public class TouchLink
         this.Puck = Puck;
 
         this.Puck.idle = false;
+        this.Puck.animator.SetBool("Idle", false);
+        //animator idle false
         this.Puck.followFinger = true;
     }
 

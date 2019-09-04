@@ -22,11 +22,19 @@ public class Puck : MonoBehaviour
 
     //physics
     private Rigidbody2D rb;
+    //animation
+    public Animator animator;
+
+    private void Awake()
+    {
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
         StartIdle();
     }
 
@@ -122,17 +130,24 @@ public class Puck : MonoBehaviour
         if (this.idle)
         {
             idle = false;
+            animator.SetBool("Idle", false);
+            //animator idle false
         }
         else if(collidedWithIdle)
         {
-            idle = true;
+            StartIdle();
         }
     }
 
     private void StartIdle()
     {
+
         if (!this.idle)
+        {
             idle = true;
+            animator.SetBool("Idle", true);
+            //animator idle true
+        }
         if (transform.position.x < 0f)
         {
             SwitchOwner(1);
@@ -158,10 +173,12 @@ public class Puck : MonoBehaviour
         {
             //blue
             this.id = 1;
+            //animator.runtimeAnimatorController = GameManager.Instance.bluePuckController
             if (specialPuck)
                 spriteRenderer.color = Color.HSVToRGB(0.69f, 0.67f, 0.22f);
             else
-                spriteRenderer.color = Color.blue;
+                animator.runtimeAnimatorController = GameManager.Instance.bluePuck;
+                //spriteRenderer.color = Color.blue;
         }
         else
         {
@@ -170,7 +187,8 @@ public class Puck : MonoBehaviour
             if(specialPuck)
                 spriteRenderer.color = Color.HSVToRGB(0f, 0.67f, 0.22f);
             else
-                spriteRenderer.color = Color.red;
+                animator.runtimeAnimatorController = GameManager.Instance.RedPuck;
+            //spriteRenderer.color = Color.red;
         }
     }
 
