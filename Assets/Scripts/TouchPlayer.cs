@@ -126,16 +126,6 @@ public class TouchPlayer : MonoBehaviour
             }*/
 #endif
 
-            /*
-            if (playerOneTarget != null)
-                PuckFollow(1, playerOneTarget, playerOneRigidBody, playerOneTouch.position);
-
-            if (playerTwoTarget != null)
-                PuckFollow(2, playerTwoTarget, playerTwoRigidBody, playerTwoTouch.position);
-            */
-            /**/
-        }
-
         for (int j = 0; j < touches.Length; j++)
         {
             if (touches[j] != null)
