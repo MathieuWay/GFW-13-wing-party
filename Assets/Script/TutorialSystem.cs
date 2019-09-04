@@ -7,12 +7,18 @@ public class TutorialSystem : MonoBehaviour
     private int countdown=0;
     private int skipcount_p1=0;
     private int skipcount_p2=0;
-    public GameObject text1, text2, text3, text4, tutorialPopUp, HUD;
+    public static bool tutorialskipped=false;
+    public GameObject text1, text2, text3, text4, tutorialPopUp, HUD, timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(tutorialskipped==true){
+            tutorialPopUp.SetActive(false);
+            HUD.SetActive(true);
+            timer.SetActive(true);
+            
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +45,8 @@ public class TutorialSystem : MonoBehaviour
         if(countdown==4){
             tutorialPopUp.SetActive(false);
             HUD.SetActive(true);
+            timer.SetActive(true);
+            tutorialskipped=true;
         }
     }
 

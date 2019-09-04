@@ -17,16 +17,19 @@ public class CountdownTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+     
         currentTime=startingTime;
        
+    
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+        
         currentTime -=1 * Time.deltaTime;
+        
         countdownText.text = currentTime.ToString("0");
         countdownText1.text = currentTime.ToString("0");
 
@@ -40,7 +43,7 @@ public class CountdownTimer : MonoBehaviour
         }
 
 
-        if(currentTime<=-5)
+        if(currentTime<=-5 || Input.GetKeyDown("a"))
         {
             
             Application.LoadLevel(Application.loadedLevel);
@@ -48,3 +51,4 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 }
+
