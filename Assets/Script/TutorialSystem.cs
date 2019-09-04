@@ -87,5 +87,5 @@ public class TutorialSystem : MonoBehaviour
             skipcount_p2=5;
         }
 }
-
+//note ceci est une note inutile
 }
