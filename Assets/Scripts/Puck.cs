@@ -46,7 +46,7 @@ public class Puck : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             collisionId = collision.gameObject.GetComponent<Wall>().GetId();
-            //SoundManager.instance.PlayBounceSFX();
+            SoundManager.instance.PlayBounceSFX();
 
             if (id != collisionId)
                 changeOwnerNextUpdate = true;
@@ -54,6 +54,10 @@ public class Puck : MonoBehaviour
             {
 
             }
+        }
+        else if (collision.gameObject.tag == "Grey Wall")
+        {
+            SoundManager.instance.PlayBounceSFX();
         }
         else if(collision.gameObject.tag == "Puck")
         {
