@@ -7,16 +7,12 @@ public class TouchPlayer : MonoBehaviour
     //private GameObject puckTarget;
     int id = 0;
     public float speed;
+    public float speedBoost;
     private Vector3 mousePosition;
     private Vector2 direction;
 
     private TouchLink[] touches;
-    //PLAYER ONE TARGET
-    //PLAYER two TARGET
-    public Touch playerTwoTouch;
-    public GameObject playerTwoTarget;
-    private Rigidbody2D playerTwoRigidBody;
-    private Puck playerTwoPuck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +50,7 @@ public class TouchPlayer : MonoBehaviour
         }
         else if(Input.GetMouseButtonUp(0) && touches[0] != null)
         {
-            touches[0].Unlink();
-            touches[0] = null;
+            Unlink(0);
         }
 #endif
 #if UNITY_ANDROID
@@ -87,8 +82,7 @@ public class TouchPlayer : MonoBehaviour
                 case TouchPhase.Ended:
                     if (touches[i] != null)
                     {
-                        touches[i].Unlink();
-                        touches[i] = null;
+                        Unlink(i);
                     }
                     break;
                 case TouchPhase.Moved:
@@ -177,28 +171,17 @@ public class TouchPlayer : MonoBehaviour
             }
             else
             {
-                touches[linkIndex].Unlink();
-                touches[linkIndex] = null;
+            Unlink(linkIndex);
             }
         }
 
-        /*private void unlinkPuck(int id)
-        {
-            Debug.Log("unlink Puck !!");
-            if (id == 1)
-            {
-                playerOnePuck.followFinger = false;
-                playerOneRigidBody = null;
-                playerOneTarget = null;
-            }
-            else
-            {
-                playerTwoPuck.followFinger = false;
-                playerTwoRigidBody = null;
-                playerTwoTarget = null;
-            }
-        }*/
+    public void Unlink(int index)
+    {
+        touches[index].Puck.followFinger = false;
+        touches[index].RigidBody.velocity *= speedBoost; 
+        touches[index] = null;
     }
+}
 
 public class TouchLink
 {
@@ -226,10 +209,5 @@ public class TouchLink
 
         this.Puck.idle = false;
         this.Puck.followFinger = true;
-    }
-
-    public void Unlink()
-    {
-        this.Puck.followFinger = false;
     }
 }
