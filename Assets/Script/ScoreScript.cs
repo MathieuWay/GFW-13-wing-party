@@ -51,8 +51,8 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        scoreValue_p1=GameManager.Instance.GetPlayer(1).GetScore();
-        scoreValue_p2=GameManager.Instance.GetPlayer(2).GetScore();
+        scoreValue_p1 = GameManager.Instance.GetPlayer(1).GetScore();
+        scoreValue_p2 = GameManager.Instance.GetPlayer(2).GetScore();
         Debug.Log(scoreValue_p1);
 
     
