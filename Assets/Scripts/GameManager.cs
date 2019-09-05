@@ -44,11 +44,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         playerOne = new Player(1);
         playerTwo = new Player(2);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         if (!debug)
         {
             for (int i = 0; i < minPuckPerSide; i++)

@@ -8,6 +8,7 @@ public class TutorialSystem : MonoBehaviour
     private int skipcount_p1=0;
     private int skipcount_p2=0;
     public GameObject text1, text2, text3, text4, text5, tutorialPopUp;
+    public string nextScene;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class TutorialSystem : MonoBehaviour
         }
         if(countdown==5){
             
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
             //ici remplacer 0 par le numéro de la scène de jeu dans les build settings
         }
     }

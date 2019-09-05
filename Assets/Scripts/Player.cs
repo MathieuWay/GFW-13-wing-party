@@ -21,8 +21,6 @@ public class Player
     public void AddScore(int amount)
     {
         this.score += amount;
-        if (this.score >= winScoreCondition)
-            GameManager.Instance.TriggerWin(this.id);
     }
 
     public int GetScore()

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/DEBUG_Gameplay.unity
-    guid: 607394cc71748cd48bc2ec6cfc9e0b03
+    path: Assets/_Scenes/Benjamin.unity
+    guid: 3b9d903eb49b04045bc84ba57f7097f7
   - enabled: 1
-    path: Assets/_Scenes/MainMenu_Loic.unity
-    guid: 6e0a903e282325e469b376b412f14e97
+    path: Assets/_Scenes/Loic.unity
+    guid: f2e50c1497c88b84889a314a920cc2e6
   - enabled: 1
     path: Assets/_Scenes/Prototype.unity
     guid: 564c45bb4ebb97e4bb2a67dedf75eb19
