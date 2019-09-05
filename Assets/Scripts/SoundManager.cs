@@ -8,12 +8,15 @@ public class SoundManager : MonoBehaviour
     public AudioSource goalSFX;
     public AudioSource BounceSFX;
     public AudioSource pengouinBounceSFX;
+    public AudioSource victorySFX;
 
     public AudioClip[] bounceArray;
 
     public AudioClip[] wallBounceArray;
 
     public AudioClip[] goalArray;
+
+    public AudioClip[] victoryArray;
 
     public static SoundManager instance;
 
@@ -56,6 +59,18 @@ public class SoundManager : MonoBehaviour
     {
         pengouinBounceSFX.clip = bounceArray[Random.Range(0, bounceArray.Length)];
         pengouinBounceSFX.Play();
+    }
+
+    public void PlayRoundSFX()
+    {
+        victorySFX.clip = victoryArray[0];
+        victorySFX.Play();
+    }
+
+    public void PlayVictorySFX()
+    {
+        victorySFX.clip = victoryArray[1];
+        victorySFX.Play();
     }
 
 }

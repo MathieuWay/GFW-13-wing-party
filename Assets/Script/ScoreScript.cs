@@ -26,12 +26,16 @@ public class ScoreScript : MonoBehaviour
     [SerializeField] Text winnerName2;
     [SerializeField] Text finalWinner;
     [SerializeField] Text finalWinner2;
-    
-    
+
+    bool isSoundPlayed = false;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        isSoundPlayed = false;
+
         Debug.Log("Round"+ numberofrounds);
         score = GetComponent<Text>();
         if(equality==false){
@@ -163,6 +167,11 @@ public class ScoreScript : MonoBehaviour
             finalWinner2.text = "Le joueur bleu remporte la partie";
             p1wonset1.SetActive(true);
             p1wonset2.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
 
         if(p1wonfirstset && p1wonthirdset){
@@ -173,6 +182,11 @@ public class ScoreScript : MonoBehaviour
             p1wonset1.SetActive(true);
             p2wonset2.SetActive(true);
             p1wonset3.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
 
         if(p1wonsecondset && p1wonthirdset){
@@ -183,6 +197,11 @@ public class ScoreScript : MonoBehaviour
             p2wonset1.SetActive(true);
             p1wonset2.SetActive(true);
             p1wonset3.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
         
         if(p2wonfirstset && p2wonsecondset){
@@ -192,6 +211,11 @@ public class ScoreScript : MonoBehaviour
             finalWinner2.text = "Le joueur rouge remporte la partie";
             p2wonset1.SetActive(true);
             p2wonset2.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
 
         if(p2wonfirstset && p2wonthirdset){
@@ -202,6 +226,11 @@ public class ScoreScript : MonoBehaviour
             p2wonset1.SetActive(true);
             p1wonset2.SetActive(true);
             p2wonset3.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
 
         if(p2wonsecondset && p2wonthirdset){
@@ -212,6 +241,11 @@ public class ScoreScript : MonoBehaviour
             p1wonset1.SetActive(true);
             p2wonset2.SetActive(true);
             p2wonset3.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayVictorySFX();
+                isSoundPlayed = true;
+            }
         }
     }
         

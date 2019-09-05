@@ -14,13 +14,15 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] Text countdownText;
     [SerializeField] Text countdownText1;
 
+    bool isSoundPlayed = false;
+
     // Start is called before the first frame update
     void Start()
     {
      
         currentTime=startingTime;
-       
-    
+        isSoundPlayed = false;
+
     }
 
     // Update is called once per frame
@@ -38,12 +40,17 @@ public class CountdownTimer : MonoBehaviour
         {
             //Debug.Log("Le timer est passé dans le négatif"); 
             Endcard.SetActive(true);
+            if (!isSoundPlayed)
+            {
+                SoundManager.instance.PlayRoundSFX();
+                isSoundPlayed = true;
+            }
             HUD.SetActive(false);
 
         }
 
 
-        if(currentTime<=-5 || Input.GetKeyDown("a"))
+        if(currentTime<=-3 || Input.GetKeyDown("a"))
         {
             
             Application.LoadLevel(Application.loadedLevel);
