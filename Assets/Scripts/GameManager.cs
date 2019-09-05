@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     public GameObject blockPlayer1;
     public GameObject blockPlayer2;
 
+    //Anim Controller
+    public RuntimeAnimatorController bluePuck;
+    public RuntimeAnimatorController RedPuck;
+    public RuntimeAnimatorController blueMaskedPuck;
+    public RuntimeAnimatorController RedMaskedPuck;
+
     public bool debug;
 
     private static GameManager instance;
