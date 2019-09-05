@@ -6,7 +6,7 @@ public class Puck : MonoBehaviour
 {
     public int id;
     private int value = 1;
-    private bool specialPuck;
+    public bool specialPuck;
     public bool followFinger;
     //idle
     public bool idle;
@@ -71,6 +71,10 @@ public class Puck : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Puck")
         {
+            if (!idle)
+            {
+                SoundManager.instance.PlayPengouinBounceSFX();
+            }
             Puck collidedpuck = collision.gameObject.GetComponent<Puck>();
             collisionId = collidedpuck.GetId();
             //PHYSICS
