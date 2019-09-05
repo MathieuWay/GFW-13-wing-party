@@ -71,6 +71,10 @@ public class Puck : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Puck")
         {
+            if (!idle)
+            {
+                SoundManager.instance.PlayPengouinBounceSFX();
+            }
             Puck collidedpuck = collision.gameObject.GetComponent<Puck>();
             collisionId = collidedpuck.GetId();
             //PHYSICS
