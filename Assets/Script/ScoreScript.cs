@@ -7,18 +7,18 @@ using UnityEngine.SceneManagement;
 public class ScoreScript : MonoBehaviour
 {
 
-    public int scoreValue_p1=0;
-    public int scoreValue_p2=0;
+    public static int scoreValue_p1=0;
+    public static int scoreValue_p2=0;
     public static float timer;
     public static int wins_p1=0;
     public static int wins_p2=0;
-    private bool p1wonfirstset=false;
-    private bool p2wonfirstset=false;
-    private bool p1wonsecondset=false;
-    private bool p2wonsecondset=false;
-    private bool p1wonthirdset=false;
-    private bool p2wonthirdset=false;
-    private bool equality=false;
+    public static bool p1wonfirstset=false;
+    public static bool p2wonfirstset=false;
+    public static bool p1wonsecondset=false;
+    public static bool p2wonsecondset=false;
+    public static bool p1wonthirdset=false;
+    public static bool p2wonthirdset=false;
+    public static bool equality=false;
     public static int numberofrounds=0;
     public GameObject gameEnded,endcard,HUD,p1wonset1,p1wonset2,p1wonset3,p2wonset1,p2wonset2,p2wonset3;
     Text score;
@@ -32,37 +32,30 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Round"+ numberofrounds);
         score = GetComponent<Text>();
-        if (score.tag == "Player1")if(equality==false){
-        {
+        if(equality==false){
+        
             numberofrounds=numberofrounds+1;
-        }
+        
         }
         Debug.Log("This round's number is" + numberofrounds);
         if(equality==true){
             equality=false;
             Debug.Log("There was a tie in the previous round");
+            
         }
-
+    
     }
 
     // Update is called once per frame
     void Update()
-    {
-        scoreValue_p1=GameManager.Instance.GetPlayer(1).GetScore;
-        scoreValue_p2=GameManager.Instance.GetPlayer(2).GetScore;
+    {   
+        scoreValue_p1=GameManager.Instance.GetPlayer(1).GetScore();
+        scoreValue_p2=GameManager.Instance.GetPlayer(2).GetScore();
+        Debug.Log(scoreValue_p1);
 
-        if (score.tag == "Player1" )
-        {
-            score.text = "Score : "+scoreValue_p1;
-        }
-
-        if (score.tag == "Player2" )
-        {
-            score.text = "Score : "+scoreValue_p2;
-        }
-
+    
         if (scoreValue_p1>scoreValue_p2)
         {
             winnerName.text = "Le joueur 1 remporte cette manche";
@@ -92,12 +85,16 @@ public class ScoreScript : MonoBehaviour
              if(p1wonfirstset==false && p2wonfirstset==false){
 
                 p1wonfirstset=true;
+                
             }
 
             if(p1wonfirstset==true || p2wonfirstset==true){
                 if(numberofrounds==2){
                     
                 p1wonsecondset=true;
+                Debug.Log(p1wonsecondset);
+              
+                
                 }
             }
 
