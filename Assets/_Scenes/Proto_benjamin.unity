@@ -7861,7 +7861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  playerTwoTarget: {fileID: 0}
+  speedBoost: 0
 --- !u!1 &731328814
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,6 +12001,10 @@ MonoBehaviour:
   incrementCooldown: 0
   blockPlayer1: {fileID: 0}
   blockPlayer2: {fileID: 0}
+  bluePuck: {fileID: 0}
+  RedPuck: {fileID: 0}
+  blueMaskedPuck: {fileID: 0}
+  RedMaskedPuck: {fileID: 0}
   debug: 1
 --- !u!1 &1093262123
 GameObject:
