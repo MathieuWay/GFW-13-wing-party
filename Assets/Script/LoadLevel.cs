@@ -9,7 +9,7 @@ public class LoadLevel : MonoBehaviour{
 
 public void LoadLvl(string nameScene)
 {
-        GetComponent<AudioSource>().Play();
+    GetComponent<AudioSource>().Play();
     UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
 }
 
