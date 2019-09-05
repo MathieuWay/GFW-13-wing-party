@@ -163,15 +163,21 @@ public class TouchPlayer : MonoBehaviour
 
         private void PuckFollow(int linkIndex, int id, GameObject puckTarget, Rigidbody2D puckTargetRigidBody, Vector3 posScreen)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(posScreen);
-            if ((pos.x < 0 && id == 1) || (pos.x > 0 && id == 2))
+            if(puckTargetRigidBody != null)
             {
-                direction = (pos - puckTarget.transform.position).normalized;
-                puckTargetRigidBody.velocity = new Vector2(direction.x * speed, direction.y * speed);
+                Vector3 pos = Camera.main.ScreenToWorldPoint(posScreen);
+                if ((pos.x < 0 && id == 1) || (pos.x > 0 && id == 2))
+                {
+                    direction = (pos - puckTarget.transform.position).normalized;
+                    puckTargetRigidBody.velocity = new Vector2(direction.x * speed, direction.y * speed);
+                }
+                else
+                {
+                Unlink(linkIndex);
+                }
             }
-            else
-            {
-            Unlink(linkIndex);
+            else {
+                touches[linkIndex] = null;
             }
         }
 
