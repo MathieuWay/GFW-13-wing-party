@@ -58,22 +58,22 @@ public class ScoreScript : MonoBehaviour
     
         if (scoreValue_p1>scoreValue_p2)
         {
-            winnerName.text = "Le joueur 1 remporte cette manche";
-            winnerName2.text = "Le joueur 1 remporte cette manche";
+            winnerName.text = "Le joueur bleu remporte cette manche";
+            winnerName2.text = "Le joueur bleu remporte cette manche";
             
         }
 
         if (scoreValue_p1<scoreValue_p2)
         {
-            winnerName.text = "Le joueur 2 remporte cette manche";
-            winnerName2.text = "Le joueur 2 remporte cette manche";
+            winnerName.text = "Le joueur rouge remporte cette manche";
+            winnerName2.text = "Le joueur rouge remporte cette manche";
 
         }
 
         if (scoreValue_p1==scoreValue_p2)
         {
-            winnerName.text = "Egalité ! Chaque joueur remporte un point";
-            winnerName2.text = "Egalité ! Chaque joueur remporte un point";
+            winnerName.text = "Egalité !";
+            winnerName2.text = "Egalité !";
 
         }
 
@@ -159,8 +159,8 @@ public class ScoreScript : MonoBehaviour
         if(p1wonfirstset && p1wonsecondset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 1 remporte la partie";
-            finalWinner2.text = "Le joueur 1 remporte la partie";
+            finalWinner.text = "Le joueur bleu remporte la partie";
+            finalWinner2.text = "Le joueur bleu remporte la partie";
             p1wonset1.SetActive(true);
             p1wonset2.SetActive(true);
         }
@@ -168,8 +168,8 @@ public class ScoreScript : MonoBehaviour
         if(p1wonfirstset && p1wonthirdset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 1 remporte la partie";
-            finalWinner2.text = "Le joueur 1 remporte la partie";
+            finalWinner.text = "Le joueur bleu remporte la partie";
+            finalWinner2.text = "Le joueur bleu remporte la partie";
             p1wonset1.SetActive(true);
             p2wonset2.SetActive(true);
             p1wonset3.SetActive(true);
@@ -178,8 +178,8 @@ public class ScoreScript : MonoBehaviour
         if(p1wonsecondset && p1wonthirdset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 1 remporte la partie";
-            finalWinner2.text = "Le joueur 1 remporte la partie";
+            finalWinner.text = "Le joueur bleu remporte la partie";
+            finalWinner2.text = "Le joueur bleu remporte la partie";
             p2wonset1.SetActive(true);
             p1wonset2.SetActive(true);
             p1wonset3.SetActive(true);
@@ -188,8 +188,8 @@ public class ScoreScript : MonoBehaviour
         if(p2wonfirstset && p2wonsecondset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 2 remporte la partie";
-            finalWinner2.text = "Le joueur 2 remporte la partie";
+            finalWinner.text = "Le joueur rouge remporte la partie";
+            finalWinner2.text = "Le joueur rouge remporte la partie";
             p2wonset1.SetActive(true);
             p2wonset2.SetActive(true);
         }
@@ -197,8 +197,8 @@ public class ScoreScript : MonoBehaviour
         if(p2wonfirstset && p2wonthirdset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 2 remporte la partie";
-            finalWinner2.text = "Le joueur 2 remporte la partie";
+            finalWinner.text = "Le joueur rouge remporte la partie";
+            finalWinner2.text = "Le joueur rouge remporte la partie";
             p2wonset1.SetActive(true);
             p1wonset2.SetActive(true);
             p2wonset3.SetActive(true);
@@ -207,8 +207,8 @@ public class ScoreScript : MonoBehaviour
         if(p2wonsecondset && p2wonthirdset){
             gameEnded.SetActive(true);
             Time.timeScale=0;
-            finalWinner.text = "Le joueur 2 remporte la partie";
-            finalWinner2.text = "Le joueur 2 remporte la partie";
+            finalWinner.text = "Le joueur rouge remporte la partie";
+            finalWinner2.text = "Le joueur rouge remporte la partie";
             p1wonset1.SetActive(true);
             p2wonset2.SetActive(true);
             p2wonset3.SetActive(true);
