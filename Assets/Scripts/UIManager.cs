@@ -43,13 +43,13 @@ public class UIManager : MonoBehaviour
         {
             BlockButtonPlayerOne.enabled = state;
             if (state)
-                BlockButtonPlayerOne.GetComponentInChildren<Text>().text = "Ready";
+                BlockButtonPlayerOne.GetComponentInChildren<TextMeshProUGUI>().text = "Ready";
         }
         else
         {
             BlockButtonPlayerTwo.enabled = state;
             if (state)
-                BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = "Ready";
+                BlockButtonPlayerTwo.GetComponentInChildren<TextMeshProUGUI>().text = "Ready";
         }
     }
 
@@ -57,9 +57,9 @@ public class UIManager : MonoBehaviour
     {
         float cooldownMax = GameManager.Instance.BlockCoolDown + GameManager.Instance.GetPlayer(id).GetDowntimeBonus();
         if (id == 1)
-            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = (cooldownMax - time).ToString("0");
+            BlockButtonPlayerOne.GetComponentInChildren<TextMeshProUGUI>().text = (cooldownMax - time).ToString("0");
         else
-            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = (cooldownMax - time).ToString("0");
+            BlockButtonPlayerTwo.GetComponentInChildren<TextMeshProUGUI>().text = (cooldownMax - time).ToString("0");
     }
 
     public void StartBlock(int id)
@@ -67,12 +67,12 @@ public class UIManager : MonoBehaviour
         if(id == 1)
         {
             SetBlockButtonState(id, false);
-            BlockButtonPlayerOne.GetComponentInChildren<Text>().text = "ACTIVATED";
+            BlockButtonPlayerOne.GetComponentInChildren<TextMeshProUGUI>().text = "ACTIVATED";
         }
         else
         {
             SetBlockButtonState(id, false);
-            BlockButtonPlayerTwo.GetComponentInChildren<Text>().text = "ACTIVATED";
+            BlockButtonPlayerTwo.GetComponentInChildren<TextMeshProUGUI>().text = "ACTIVATED";
         }
 
     }

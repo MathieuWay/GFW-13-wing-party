@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 {
     public static float currentTime=0;
-    float startingTime=10f;
+    float startingTime=90f;
     public GameObject Endcard,HUD;
 
 

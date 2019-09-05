@@ -6,7 +6,7 @@ public class Puck : MonoBehaviour
 {
     public int id;
     private int value = 1;
-    private bool specialPuck;
+    public bool specialPuck;
     public bool followFinger;
     //idle
     public bool idle;
@@ -97,9 +97,12 @@ public class Puck : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector2 v = rb.velocity;
-        float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle+90f, Vector3.forward);
+        if(rb.velocity.magnitude > 0.5f)
+        {
+            Vector2 v = rb.velocity;
+            float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle + 90f, Vector3.forward);
+        }
         if (changeOwnerNextUpdate)
         {
             int newId = 0;
