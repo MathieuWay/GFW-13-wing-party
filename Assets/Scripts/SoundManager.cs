@@ -11,8 +11,9 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip[] bounceArray;
 
-
     public AudioClip[] wallBounceArray;
+
+    public AudioClip[] goalArray;
 
     public static SoundManager instance;
 
@@ -35,6 +36,13 @@ public class SoundManager : MonoBehaviour
 
     public void PlayGoalSFX()
     {
+        goalSFX.clip = goalArray[0];
+        goalSFX.Play();
+    }
+
+    public void PlayMaskedGoalSFX()
+    {
+        goalSFX.clip = goalArray[1];
         goalSFX.Play();
     }
 

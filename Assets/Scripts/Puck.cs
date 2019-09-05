@@ -6,7 +6,7 @@ public class Puck : MonoBehaviour
 {
     public int id;
     private int value = 1;
-    private bool specialPuck;
+    public bool specialPuck;
     public bool followFinger;
     //idle
     public bool idle;

@@ -23536,6 +23536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1441515767590022885, guid: d0597bd06c4c02643ad39e47b117e0b1,
         type: 3}
+      propertyPath: goalArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441515767590022885, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
       propertyPath: bounceArray.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: aeadafca4e267c745b888f552df722cc, type: 3}
@@ -23654,10 +23659,20 @@ PrefabInstance:
       propertyPath: wallBounceArray.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: dbed83da59c4596409f28126a2e93294, type: 3}
+    - target: {fileID: 1441515767590022885, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: goalArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 086dec69ff3acaa4b9328f2becd3373b, type: 3}
+    - target: {fileID: 1441515767590022885, guid: d0597bd06c4c02643ad39e47b117e0b1,
+        type: 3}
+      propertyPath: goalArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c687b35705670044ad60565ff2f62d3, type: 3}
     - target: {fileID: 1441515769275966773, guid: d0597bd06c4c02643ad39e47b117e0b1,
         type: 3}
       propertyPath: m_Volume
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1441515769642967247, guid: d0597bd06c4c02643ad39e47b117e0b1,
         type: 3}
