@@ -9,7 +9,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource BounceSFX;
     public AudioSource pengouinBounceSFX;
 
-    public AudioClip[] bounceArray; 
+    public AudioClip[] bounceArray;
+
+
+    public AudioClip[] wallBounceArray;
 
     public static SoundManager instance;
 
@@ -37,6 +40,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBounceSFX()
     {
+        BounceSFX.clip = wallBounceArray[Random.Range(0, wallBounceArray.Length)];
         BounceSFX.Play();
     }
 
