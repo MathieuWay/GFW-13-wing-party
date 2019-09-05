@@ -32,36 +32,30 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreValue_p1=0;
-        scoreValue_p2=0;
+        Debug.Log("Round"+ numberofrounds);
         score = GetComponent<Text>();
-        if (score.tag == "Player1")if(equality==false){
-        {
+        if(equality==false){
+        
             numberofrounds=numberofrounds+1;
-        }
+        
         }
         Debug.Log("This round's number is" + numberofrounds);
         if(equality==true){
             equality=false;
             Debug.Log("There was a tie in the previous round");
+            
         }
-
+    
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        scoreValue_p1=GameManager.Instance.GetPlayer(1).GetScore();
+        scoreValue_p2=GameManager.Instance.GetPlayer(2).GetScore();
+        Debug.Log(scoreValue_p1);
 
-        if (score.tag == "Player1" )
-        {
-            score.text = "Score : "+scoreValue_p1;
-        }
-
-        if (score.tag == "Player2" )
-        {
-            score.text = "Score : "+scoreValue_p2;
-        }
-
+    
         if (scoreValue_p1>scoreValue_p2)
         {
             winnerName.text = "Le joueur 1 remporte cette manche";
@@ -91,12 +85,16 @@ public class ScoreScript : MonoBehaviour
              if(p1wonfirstset==false && p2wonfirstset==false){
 
                 p1wonfirstset=true;
+                
             }
 
             if(p1wonfirstset==true || p2wonfirstset==true){
                 if(numberofrounds==2){
                     
                 p1wonsecondset=true;
+                Debug.Log(p1wonsecondset);
+              
+                
                 }
             }
 
